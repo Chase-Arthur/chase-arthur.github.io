@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>蔡子健 - 个人主页</title>
+    <title>蔡子健 / Chase Cai - Personal Homepage</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,6 +20,29 @@
             line-height: 1.8;
             color: #333;
             background: #f5f5f5;
+        }
+
+        /* Language Toggle Button */
+        .lang-toggle {
+            position: fixed;
+            top: 70px;
+            right: 20px;
+            z-index: 200;
+            background: #0066cc;
+            color: #fff;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            box-shadow: 0 2px 10px rgba(0,102,204,0.3);
+            transition: all 0.3s;
+        }
+
+        .lang-toggle:hover {
+            background: #0052a3;
+            transform: scale(1.05);
         }
 
         /* Navigation */
@@ -288,6 +311,31 @@
             color: #0066cc;
         }
 
+        /* Language visibility */
+        [data-lang="en"] {
+            display: none;
+        }
+
+        body.lang-en [data-lang="zh"] {
+            display: none;
+        }
+
+        body.lang-en [data-lang="en"] {
+            display: block;
+        }
+
+        body.lang-en .nav-menu span[data-lang="zh"],
+        body.lang-en .profile-name span[data-lang="zh"],
+        body.lang-en .profile-bio span[data-lang="zh"] {
+            display: none;
+        }
+
+        body.lang-en .nav-menu span[data-lang="en"],
+        body.lang-en .profile-name span[data-lang="en"],
+        body.lang-en .profile-bio span[data-lang="en"] {
+            display: inline;
+        }
+
         /* Responsive */
         @media (max-width: 900px) {
             .main-content {
@@ -307,6 +355,11 @@
             .profile-info {
                 text-align: left;
             }
+
+            .lang-toggle {
+                top: auto;
+                bottom: 20px;
+            }
         }
 
         @media (max-width: 600px) {
@@ -321,17 +374,58 @@
     </style>
 </head>
 <body>
+    <!-- Language Toggle Button -->
+    <button class="lang-toggle" onclick="toggleLanguage()">
+        <span data-lang="zh">English</span>
+        <span data-lang="en">中文</span>
+    </button>
+
     <!-- Navigation -->
     <nav class="masthead">
         <div class="masthead__inner-wrap">
             <ul class="nav-menu">
-                <li class="nav-home"><a href="#about">主页</a></li>
-                <li><a href="#about">关于我</a></li>
-                <li><a href="#news">动态</a></li>
-                <li><a href="#publications">论文发表</a></li>
-                <li><a href="#honors">荣誉奖项</a></li>
-                <li><a href="#education">教育经历</a></li>
-                <li><a href="#experience">实习经历</a></li>
+                <li class="nav-home">
+                    <a href="#about">
+                        <span data-lang="zh">主页</span>
+                        <span data-lang="en">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#about">
+                        <span data-lang="zh">关于我</span>
+                        <span data-lang="en">About</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#news">
+                        <span data-lang="zh">动态</span>
+                        <span data-lang="en">News</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#publications">
+                        <span data-lang="zh">论文发表</span>
+                        <span data-lang="en">Publications</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#honors">
+                        <span data-lang="zh">荣誉奖项</span>
+                        <span data-lang="en">Honors</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#education">
+                        <span data-lang="zh">教育经历</span>
+                        <span data-lang="en">Education</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#experience">
+                        <span data-lang="zh">实习经历</span>
+                        <span data-lang="en">Experience</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -341,17 +435,25 @@
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="profile-box">
-                <img src="images/avatar.jpg" alt="头像" class="avatar" onerror="this.src='https://via.placeholder.com/180x180/4a90e2/ffffff?text=蔡子健'">
-                <h2 class="profile-name">蔡子健</h2>
-                <p class="profile-bio">热爱学习，追求进步</p>
+                <img src="images/avatar.jpg" alt="Avatar" class="avatar" onerror="this.src='https://via.placeholder.com/180x180/4a90e2/ffffff?text=Chase'">
+                <h2 class="profile-name">
+                    <span data-lang="zh">蔡子健</span>
+                    <span data-lang="en">Chase Cai</span>
+                </h2>
+                <p class="profile-bio">
+                    <span data-lang="zh">热爱学习，追求进步</span>
+                    <span data-lang="en">Passionate about learning and growth</span>
+                </p>
                 <ul class="profile-info">
                     <li>
                         <i class="fas fa-quote-left"></i>
-                        <span>每一天都是新的开始</span>
+                        <span data-lang="zh">每一天都是新的开始</span>
+                        <span data-lang="en">Every day is a new beginning</span>
                     </li>
                     <li>
                         <i class="fas fa-map-marker-alt"></i>
-                        <span>中国</span>
+                        <span data-lang="zh">中国</span>
+                        <span data-lang="en">China</span>
                     </li>
                     <li>
                         <i class="fas fa-envelope"></i>
@@ -359,7 +461,7 @@
                     </li>
                     <li>
                         <i class="fab fa-github"></i>
-                        <a href="https://github.com/yourusername" target="_blank">GitHub</a>
+                        <a href="https://github.com/Chase-Arthur" target="_blank">GitHub</a>
                     </li>
                 </ul>
             </div>
@@ -369,109 +471,157 @@
         <main class="content">
             <!-- About Me -->
             <section id="about" class="section">
-                <h2 class="section-title"><i class="fas fa-user"></i>关于我</h2>
+                <h2 class="section-title">
+                    <i class="fas fa-user"></i>
+                    <span data-lang="zh">关于我</span>
+                    <span data-lang="en">About Me</span>
+                </h2>
                 <div class="about-text">
-                    <p>
-                        你好！我是蔡子健，正在学习如何使用 OpenClaw。
+                    <p data-lang="zh">
+                        你好！我是蔡子健，正在学习如何使用 OpenClaw。我对技术充满热情，喜欢探索新事物。
                     </p>
-                    <p>
-                        <!-- 在这里添加你的个人介绍 -->
-                        我对技术充满热情，喜欢探索新事物。
+                    <p data-lang="en">
+                        Hello! I'm Chase Cai (蔡子健), currently learning how to use OpenClaw. I'm passionate about technology and love exploring new things.
                     </p>
-                    <p>
-                        <strong>研究方向/兴趣：</strong>
-                        <!-- 添加你的研究兴趣 -->
-                        人工智能、机器学习、深度学习
+                    <p data-lang="zh">
+                        <strong>研究方向/兴趣：</strong>人工智能、机器学习、深度学习
+                    </p>
+                    <p data-lang="en">
+                        <strong>Research Interests:</strong> Artificial Intelligence, Machine Learning, Deep Learning
                     </p>
                 </div>
             </section>
 
             <!-- News -->
             <section id="news" class="section">
-                <h2 class="section-title"><i class="fas fa-bullhorn"></i>最新动态</h2>
+                <h2 class="section-title">
+                    <i class="fas fa-bullhorn"></i>
+                    <span data-lang="zh">最新动态</span>
+                    <span data-lang="en">Latest News</span>
+                </h2>
                 <ul class="news-list">
                     <li class="news-item">
                         <span class="news-date">2025.03</span>
-                        <span>开始学习 OpenClaw 的使用</span>
+                        <span data-lang="zh">开始学习 OpenClaw 的使用</span>
+                        <span data-lang="en">Started learning OpenClaw</span>
                     </li>
                     <li class="news-item">
                         <span class="news-date">2024.09</span>
-                        <span>新学期开始</span>
+                        <span data-lang="zh">新学期开始</span>
+                        <span data-lang="en">New semester began</span>
                     </li>
-                    <!-- 添加更多动态 -->
                 </ul>
             </section>
 
             <!-- Publications -->
             <section id="publications" class="section">
-                <h2 class="section-title"><i class="fas fa-file-alt"></i>论文发表</h2>
+                <h2 class="section-title">
+                    <i class="fas fa-file-alt"></i>
+                    <span data-lang="zh">论文发表</span>
+                    <span data-lang="en">Publications</span>
+                </h2>
                 <div class="publication-item">
-                    <div class="publication-venue">[会议/期刊 年份]</div>
+                    <div class="publication-venue">[Conference/Journal 2024]</div>
                     <div class="publication-title">
-                        <a href="#">论文标题（点击此处替换为你的论文链接）</a>
+                        <a href="#">
+                            <span data-lang="zh">论文标题（点击此处替换为你的论文链接）</span>
+                            <span data-lang="en">Paper Title (Click to replace with your paper link)</span>
+                        </a>
                     </div>
                     <div class="publication-authors">
-                        作者1, 作者2, <strong>蔡子健</strong>, 作者3
+                        Author1, Author2, <strong>Chase Cai (蔡子健)</strong>, Author3
                     </div>
                 </div>
-                <!-- 复制上面的 publication-item 添加更多论文 -->
             </section>
 
             <!-- Honors -->
             <section id="honors" class="section">
-                <h2 class="section-title"><i class="fas fa-trophy"></i>荣誉奖项</h2>
+                <h2 class="section-title">
+                    <i class="fas fa-trophy"></i>
+                    <span data-lang="zh">荣誉奖项</span>
+                    <span data-lang="en">Honors & Awards</span>
+                </h2>
                 <div class="honor-item">
                     <span class="honor-date">2024</span>
-                    <span>某某奖学金</span>
+                    <span data-lang="zh">某某奖学金</span>
+                    <span data-lang="en">Scholarship Award</span>
                 </div>
                 <div class="honor-item">
                     <span class="honor-date">2023</span>
-                    <span>某某竞赛一等奖</span>
+                    <span data-lang="zh">某某竞赛一等奖</span>
+                    <span data-lang="en">First Prize in Competition</span>
                 </div>
-                <!-- 添加更多荣誉 -->
             </section>
 
             <!-- Education -->
             <section id="education" class="section">
-                <h2 class="section-title"><i class="fas fa-graduation-cap"></i>教育经历</h2>
+                <h2 class="section-title">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span data-lang="zh">教育经历</span>
+                    <span data-lang="en">Education</span>
+                </h2>
                 <div class="timeline-item">
-                    <div class="timeline-date">2022.09 - 至今</div>
+                    <div class="timeline-date">2022.09 - <span data-lang="zh">至今</span><span data-lang="en">Present</span></div>
                     <div class="timeline-content">
-                        <h4>某某大学</h4>
-                        <p>专业名称（本科/硕士/博士）</p>
+                        <h4><span data-lang="zh">某某大学</span><span data-lang="en">University Name</span></h4>
+                        <p><span data-lang="zh">专业名称（本科/硕士/博士）</span><span data-lang="en">Major (Bachelor/Master/PhD)</span></p>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-date">2018.09 - 2022.06</div>
                     <div class="timeline-content">
-                        <h4>某某高中</h4>
-                        <p>高中教育</p>
+                        <h4><span data-lang="zh">某某高中</span><span data-lang="en">High School Name</span></h4>
+                        <p><span data-lang="zh">高中教育</span><span data-lang="en">High School Education</span></p>
                     </div>
                 </div>
             </section>
 
             <!-- Experience -->
             <section id="experience" class="section">
-                <h2 class="section-title"><i class="fas fa-briefcase"></i>实习经历</h2>
+                <h2 class="section-title">
+                    <i class="fas fa-briefcase"></i>
+                    <span data-lang="zh">实习经历</span>
+                    <span data-lang="en">Experience</span>
+                </h2>
                 <div class="timeline-item">
                     <div class="timeline-date">2024.06 - 2024.09</div>
                     <div class="timeline-content">
-                        <h4>某某公司</h4>
-                        <p>职位：实习生</p>
-                        <p>导师：某某</p>
+                        <h4><span data-lang="zh">某某公司</span><span data-lang="en">Company Name</span></h4>
+                        <p><span data-lang="zh">职位：实习生</span><span data-lang="en">Position: Intern</span></p>
                     </div>
                 </div>
-                <!-- 添加更多实习经历 -->
             </section>
         </main>
     </div>
 
     <!-- Footer -->
     <footer style="text-align: center; padding: 30px; color: #666; background: #fff; margin-top: 40px;">
-        <p>© 2025 蔡子健. All Rights Reserved.</p>
+        <p>© 2025 <span data-lang="zh">蔡子健</span><span data-lang="en">Chase Cai</span>. All Rights Reserved.</p>
         <p style="margin-top: 10px; font-size: 0.9em;">
-            基于 <a href="https://alberttan404.github.io/" target="_blank" style="color: #0066cc;">AcademicPages</a> 模板
+            <span data-lang="zh">基于</span><span data-lang="en">Based on</span> <a href="https://alberttan404.github.io/" target="_blank" style="color: #0066cc;">AcademicPages</a> <span data-lang="zh">模板</span><span data-lang="en">template</span>
         </p>
     </footer>
+
+    <!-- Language Toggle Script -->
+    <script>
+        function toggleLanguage() {
+            const body = document.body;
+            if (body.classList.contains('lang-en')) {
+                body.classList.remove('lang-en');
+                localStorage.setItem('lang', 'zh');
+            } else {
+                body.classList.add('lang-en');
+                localStorage.setItem('lang', 'en');
+            }
+        }
+
+        // Remember user's language preference
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('lang');
+            if (savedLang === 'en') {
+                document.body.classList.add('lang-en');
+            }
+        });
+    </script>
 </body>
 </html>
