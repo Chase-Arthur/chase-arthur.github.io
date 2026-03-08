@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蔡子健 - 个人主页</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        /* Navigation */
+        .masthead {
+            background: #fff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .masthead__inner-wrap {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-menu li {
+            padding: 15px 20px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #0066cc;
+        }
+
+        .nav-home {
+            font-size: 1.2em;
+            font-weight: 700;
+        }
+
+        /* Main Layout */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: flex;
+            gap: 40px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 80px;
+            align-self: start;
+        }
+
+        .profile-box {
+            background: #fff;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .avatar {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 4px solid #f0f0f0;
+        }
+
+        .profile-name {
+            font-size: 1.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #222;
+        }
+
+        .profile-bio {
+            color: #666;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .profile-info {
+            list-style: none;
+            text-align: left;
+        }
+
+        .profile-info li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .profile-info li:last-child {
+            border-bottom: none;
+        }
+
+        .profile-info i {
+            color: #0066cc;
+            width: 20px;
+        }
+
+        .profile-info a {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .profile-info a:hover {
+            color: #0066cc;
+        }
+
+        /* Content Area */
+        .content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .section {
+            background: #fff;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .section-title {
+            font-size: 1.5em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #0066cc;
+            color: #222;
+        }
+
+        .section-title i {
+            margin-right: 10px;
+        }
+
+        /* About Me */
+        .about-text {
+            font-size: 1.05em;
+            line-height: 2;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+        }
+
+        /* News Timeline */
+        .news-list {
+            list-style: none;
+        }
+
+        .news-item {
+            padding: 15px 0;
+            border-left: 3px solid #0066cc;
+            padding-left: 20px;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .news-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 20px;
+            width: 13px;
+            height: 13px;
+            background: #0066cc;
+            border-radius: 50%;
+        }
+
+        .news-date {
+            font-weight: 700;
+            color: #0066cc;
+            margin-right: 10px;
+        }
+
+        /* Publications */
+        .publication-item {
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .publication-item:last-child {
+            border-bottom: none;
+        }
+
+        .publication-venue {
+            font-weight: 700;
+            color: #0066cc;
+            margin-bottom: 5px;
+        }
+
+        .publication-title {
+            font-size: 1.1em;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .publication-title a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .publication-title a:hover {
+            color: #0066cc;
+        }
+
+        .publication-authors {
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        /* Education & Experience */
+        .timeline-item {
+            display: flex;
+            gap: 20px;
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .timeline-item:last-child {
+            border-bottom: none;
+        }
+
+        .timeline-date {
+            min-width: 140px;
+            font-weight: 600;
+            color: #0066cc;
+        }
+
+        .timeline-content h4 {
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+
+        .timeline-content p {
+            color: #666;
+        }
+
+        /* Honors */
+        .honor-item {
+            padding: 12px 0;
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+
+        .honor-date {
+            min-width: 80px;
+            font-weight: 600;
+            color: #0066cc;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .main-content {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                position: relative;
+                top: 0;
+            }
+
+            .profile-box {
+                text-align: center;
+            }
+
+            .profile-info {
+                text-align: left;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .nav-menu {
+                justify-content: center;
+            }
+
+            .nav-menu li {
+                padding: 10px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="masthead">
+        <div class="masthead__inner-wrap">
+            <ul class="nav-menu">
+                <li class="nav-home"><a href="#about">主页</a></li>
+                <li><a href="#about">关于我</a></li>
+                <li><a href="#news">动态</a></li>
+                <li><a href="#publications">论文发表</a></li>
+                <li><a href="#honors">荣誉奖项</a></li>
+                <li><a href="#education">教育经历</a></li>
+                <li><a href="#experience">实习经历</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="profile-box">
+                <img src="images/avatar.jpg" alt="头像" class="avatar" onerror="this.src='https://via.placeholder.com/180x180/4a90e2/ffffff?text=蔡子健'">
+                <h2 class="profile-name">蔡子健</h2>
+                <p class="profile-bio">热爱学习，追求进步</p>
+                <ul class="profile-info">
+                    <li>
+                        <i class="fas fa-quote-left"></i>
+                        <span>每一天都是新的开始</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>中国</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:your-email@example.com">Email</a>
+                    </li>
+                    <li>
+                        <i class="fab fa-github"></i>
+                        <a href="https://github.com/yourusername" target="_blank">GitHub</a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Content -->
+        <main class="content">
+            <!-- About Me -->
+            <section id="about" class="section">
+                <h2 class="section-title"><i class="fas fa-user"></i>关于我</h2>
+                <div class="about-text">
+                    <p>
+                        你好！我是蔡子健，正在学习如何使用 OpenClaw。
+                    </p>
+                    <p>
+                        <!-- 在这里添加你的个人介绍 -->
+                        我对技术充满热情，喜欢探索新事物。
+                    </p>
+                    <p>
+                        <strong>研究方向/兴趣：</strong>
+                        <!-- 添加你的研究兴趣 -->
+                        人工智能、机器学习、深度学习
+                    </p>
+                </div>
+            </section>
+
+            <!-- News -->
+            <section id="news" class="section">
+                <h2 class="section-title"><i class="fas fa-bullhorn"></i>最新动态</h2>
+                <ul class="news-list">
+                    <li class="news-item">
+                        <span class="news-date">2025.03</span>
+                        <span>开始学习 OpenClaw 的使用</span>
+                    </li>
+                    <li class="news-item">
+                        <span class="news-date">2024.09</span>
+                        <span>新学期开始</span>
+                    </li>
+                    <!-- 添加更多动态 -->
+                </ul>
+            </section>
+
+            <!-- Publications -->
+            <section id="publications" class="section">
+                <h2 class="section-title"><i class="fas fa-file-alt"></i>论文发表</h2>
+                <div class="publication-item">
+                    <div class="publication-venue">[会议/期刊 年份]</div>
+                    <div class="publication-title">
+                        <a href="#">论文标题（点击此处替换为你的论文链接）</a>
+                    </div>
+                    <div class="publication-authors">
+                        作者1, 作者2, <strong>蔡子健</strong>, 作者3
+                    </div>
+                </div>
+                <!-- 复制上面的 publication-item 添加更多论文 -->
+            </section>
+
+            <!-- Honors -->
+            <section id="honors" class="section">
+                <h2 class="section-title"><i class="fas fa-trophy"></i>荣誉奖项</h2>
+                <div class="honor-item">
+                    <span class="honor-date">2024</span>
+                    <span>某某奖学金</span>
+                </div>
+                <div class="honor-item">
+                    <span class="honor-date">2023</span>
+                    <span>某某竞赛一等奖</span>
+                </div>
+                <!-- 添加更多荣誉 -->
+            </section>
+
+            <!-- Education -->
+            <section id="education" class="section">
+                <h2 class="section-title"><i class="fas fa-graduation-cap"></i>教育经历</h2>
+                <div class="timeline-item">
+                    <div class="timeline-date">2022.09 - 至今</div>
+                    <div class="timeline-content">
+                        <h4>某某大学</h4>
+                        <p>专业名称（本科/硕士/博士）</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2018.09 - 2022.06</div>
+                    <div class="timeline-content">
+                        <h4>某某高中</h4>
+                        <p>高中教育</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Experience -->
+            <section id="experience" class="section">
+                <h2 class="section-title"><i class="fas fa-briefcase"></i>实习经历</h2>
+                <div class="timeline-item">
+                    <div class="timeline-date">2024.06 - 2024.09</div>
+                    <div class="timeline-content">
+                        <h4>某某公司</h4>
+                        <p>职位：实习生</p>
+                        <p>导师：某某</p>
+                    </div>
+                </div>
+                <!-- 添加更多实习经历 -->
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer style="text-align: center; padding: 30px; color: #666; background: #fff; margin-top: 40px;">
+        <p>© 2025 蔡子健. All Rights Reserved.</p>
+        <p style="margin-top: 10px; font-size: 0.9em;">
+            基于 <a href="https://alberttan404.github.io/" target="_blank" style="color: #0066cc;">AcademicPages</a> 模板
+        </p>
+    </footer>
+</body>
+</html>
