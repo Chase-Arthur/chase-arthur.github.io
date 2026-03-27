@@ -614,7 +614,7 @@ document.addEventListener('DOMContentLoaded',function(){
         addMessage(text,'user');
         chatHistory.push({role:'user',content:text});
         showTyping();
-        fetch('https://43.156.159.86:3001/api/chat',{
+        fetch('https://assumption-copper-genre-lights.trycloudflare.com/api/chat',{
             method:'POST',
             headers:{'Content-Type':'application/json'},
             body:JSON.stringify({messages:chatHistory.slice(-10)})
